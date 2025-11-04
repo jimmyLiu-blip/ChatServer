@@ -1,12 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.Sockets;
 
-namespace ChatClient_Services
+namespace ChatClient_Practice.Utils
 {
-    internal class ChatClient_SocketHelper
+    public static class SocketHelper
     {
+        public static void SafeClose(Socket s)
+        {
+            if (s == null) return;
+
+            try { s.Shutdown(SocketShutdown.Both); } catch { }
+            try { s.Close(); } catch { }
+            try { s.Dispose(); } catch { }
+        }
     }
 }
