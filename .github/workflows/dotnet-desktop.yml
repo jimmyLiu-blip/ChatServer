@@ -1,0 +1,36 @@
+name: .NET CI for ExcelToWord
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: 取得程式碼
+        uses: actions/checkout@v4
+
+      - name: 安裝 .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 4.8
+
+      - name: 還原套件
+        run: dotnet restore
+
+      - name: 建置專案
+        run: dotnet build --configuration Release --no-restore
+
+      - name: 執行測試（若有）
+        run: dotnet test --no-build --verbosity normal
+
+      - name: 上傳建置結果
+        uses: actions/upload-artifact@v4
+        with:
+          name: BuildOutput
+          path: |
+            **/bin/Release/
