@@ -3,7 +3,6 @@
 using System.Collections.Concurrent;
 // 提供 Socket 通訊的所有類別（TCP/UDP）
 using System.Net.Sockets;
-using System.Security.Policy;
 using System.Text;
 // 支援非同步程式設計 (Task, async/await)
 using System.Threading.Tasks;

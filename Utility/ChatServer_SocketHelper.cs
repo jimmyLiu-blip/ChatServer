@@ -18,7 +18,8 @@ namespace ChatServer_Practice.Utility
         public static void SafeClose(Socket s)
         {
             // 通知系統「這個連線不再傳輸資料」
-            // SocketShutdown.Both 表示同時停止 發送 與 接收；SocketShutdown.Send、SocketShutdown.Receive
+            // SocketShutdown.Both 表示同時停止 發送 與 接收；
+            // SocketShutdown.Send、SocketShutdown.Receive
             try 
             { 
                 s.Shutdown(SocketShutdown.Both); 
